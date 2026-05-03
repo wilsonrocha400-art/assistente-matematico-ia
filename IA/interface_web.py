@@ -28,13 +28,14 @@ pergunta = st.text_input("Digite sua dúvida ou equação:",
 foto_problema = st.file_uploader(
     "Ou tire uma foto do problema:", type=["png", "jpg", "jpeg"])
 
-if foto_problema:
-    st.image(foto_problema, caption="Imagem carregada com sucesso!",
-             use_container_width=True)
+# 5. Lógica do botão Resolver (Remova o if foto_problema que estava acima)
 if st.button("Resolver"):
-    if pergunta:
-        resultado = answer_math_question(pergunta)
-        st.subheader("Resultado:")
-        st.write(resultado.resposta)
+    if pergunta or foto_problema:
+        with st.spinner("Analisando o problema..."):
+            resultado = answer_math_question(pergunta, foto_problema)
+
+            st.subheader("Resultado:")
+            st.write(resultado.resposta)
     else:
-        st.warning("Por favor, digite uma pergunta.")
+        st.warning(
+            "Por favor, digite uma pergunta ou carregue uma foto para resolver.")
