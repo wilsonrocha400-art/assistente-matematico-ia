@@ -6,17 +6,31 @@ st.set_page_config(page_title="Assistente Matemático IA", page_icon="🔢")
 
 # 2. Configuração da Barra Lateral (Sua biografia)
 with st.sidebar:
-    st.subheader("⌨️ Atalhos e Símbolos")
-    st.code("* -> Multiplicação\n** -> Potenciação\n/ -> Divisão")
-    st.divider()  # Este agora está alinhado à direita
+    st.subheader("⌨️ Guia de Símbolos")
+
+    # Usando Markdown para uma lista mais elegante e clara
+    st.markdown("""
+    *   **+**  → Soma
+    *   **-**  → Subtração
+    *   **\***  → Multiplicação
+    *   **/**  → Divisão
+    *   **\*\*** ou `elevado a` → Potência
+    *   `raiz de` → Raiz Quadrada
+    *   **,** (vírgula) → O sistema converte para **.** (ponto)
+    """)
+
+    st.divider()
+
+    # Sua biografia continua aqui abaixo...
 
     st.title("Sobre o Desenvolvedor")
     st.write("""
-    Esta IA foi desenvolvida por **Wilson Rocha do Nascimento**...
+    Wilson Rocha do Nascimento é um profissional de TI de 25 anos, atuando como Auxiliar de CPD no Grupo Mateus. 
+    Com 5 anos de experiência em suporte operacional e infraestrutura, ele está em seu último ano de estudos 
+    (conclusão em 2026) e foca sua transição de carreira para Análise de Dados e programação em Python.
     """)
     st.divider()
     st.info("Focado em Evolução Profissional e Análise de Dados.")
-
 # 3. Título Principal e Interface
 st.title("🔢 Assistente Matemático")
 st.markdown("Resolva equações complexas usando **IA** e **SymPy**.")
