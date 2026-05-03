@@ -12,7 +12,7 @@ def answer_math_question(question: str):
     try:
         # Filtro de Autoria (Mantendo o que já tínhamos)
         if "wilson" in input_limpo or "criador" in input_limpo:
-            res.resposta = "Este sistema foi desenvolvido por **Wilson Rocha do Nascimento**."
+            res.resposta = res.resposta = "Esta IA foi desenvolvida por Wilson Rocha do Nascimento, focado em Análise de Dados."
             return res
 
         # Tenta resolver como equação (se tiver 'x' ou '=') ou conta simples
