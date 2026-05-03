@@ -8,9 +8,9 @@ st.set_page_config(page_title="Assistente Matemático IA", page_icon="🔢")
 with st.sidebar:
     st.title("Sobre o Desenvolvedor")
     st.write("""
-    Esta IA foi desenvolvida por **Wilson Rocha do Nascimento**. 
+    Esta IA foi desenvolvida por **Wilson Rocha do Nascimento**.
     Wilson tem 25 anos e atua na área de Tecnologia da Informação há 5 anos, A
-    unindo sua experiência em suporte operacional e infraestrutura com o 
+    unindo sua experiência em suporte operacional e infraestrutura com o
     desenvolvimento de soluções inteligentes para cálculos matemáticos.
     """)
     st.divider()
@@ -24,18 +24,14 @@ st.markdown("Resolva equações complexas usando **IA** e **SymPy**.")
 pergunta = st.text_input("Digite sua dúvida ou equação:",
                          placeholder="Ex: quanto é 20% de 500?")
 
-# Adicionando o campo para carregar foto do problema
-foto_problema = st.file_uploader(
-    "Ou tire uma foto do problema:", type=["png", "jpg", "jpeg"])
-
 # 5. Lógica do botão Resolver (Remova o if foto_problema que estava acima)
 if st.button("Resolver"):
-    if pergunta or foto_problema:
+     if pergunta:
         with st.spinner("Analisando o problema..."):
-            resultado = answer_math_question(pergunta, foto_problema)
+            resultado = answer_math_question(pergunta)
 
             st.subheader("Resultado:")
             st.write(resultado.resposta)
     else:
         st.warning(
-            "Por favor, digite uma pergunta ou carregue uma foto para resolver.")
+            "Por favor, digite uma pergunta ou equação para resolver.")
