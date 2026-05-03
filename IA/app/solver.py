@@ -6,11 +6,9 @@ def answer_math_question(question: str):
         pass
     res = Result()
 
-    # Criamos um "tradutor" para termos comuns
-    # Isso permite que você digite de forma mais natural
-    input_limpo = question.lower().replace(
-        "elevado a", "**").replace("^", "**").replace(",", ".")
-
+# 10. Criamos um "tradutor" para termos comuns
+    input_limpo = question.lower().replace("elevado a", "**").replace("^",
+                                                                      "**").replace(",", ".").replace("x2", "x**2")
     try:
         # Filtro de Autoria (Mantendo o que já tínhamos)
         if "wilson" in input_limpo or "criador" in input_limpo:
