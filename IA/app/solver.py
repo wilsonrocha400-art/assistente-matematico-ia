@@ -73,13 +73,15 @@ def answer_math_question(question: str, foto=None) -> MathAnswer:
 
 def ask_openai_com_imagem(base64_image, question=None):
     from openai import OpenAI
-    client = OpenAI()  # Ele usará a sua chave já configurada
+    import streamlit as st
 
-    # Se o usuário não digitou nada, damos um comando padrão
+    # Aqui está o ajuste: forçamos o cliente a usar a sua chave salva
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
     prompt = question if question else "Resolva este problema matemático passo a passo."
 
     response = client.chat.completions.create(
-        model="gpt-4o",  # Modelo com visão computacional
+        model="gpt-4o",
         messages=[
             {
                 "role": "user",
