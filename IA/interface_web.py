@@ -1,29 +1,40 @@
 import streamlit as st
 from app.solver import answer_math_question
 
-# Configuração da página
-st.set_page_config(page_title="Assistente Matemático IA", page_icon="🧮")
+# 1. Configuração da página (DEVE ser o primeiro comando do Streamlit)
+st.set_page_config(page_title="Assistente Matemático IA", page_icon="🔢")
 
-st.title("🧮 Assistente Matemático")
+# 2. Configuração da Barra Lateral (Sua biografia)
+with st.sidebar:
+    st.title("Sobre o Desenvolvedor")
+    st.write("""
+    Esta IA foi desenvolvida por **Wilson Rocha do Nascimento**. 
+    Wilson tem 25 anos e atua na área de Tecnologia da Informação há 5 anos, A
+    unindo sua experiência em suporte operacional e infraestrutura com o 
+    desenvolvimento de soluções inteligentes para cálculos matemáticos.
+    """)
+    st.divider()
+    st.info("Focado em Evolução Profissional e Análise de Dados.")
+
+# 3. Título Principal e Interface
+st.title("🔢 Assistente Matemático")
 st.markdown("Resolva equações complexas usando **IA** e **SymPy**.")
 
-# Campo de entrada
-pergunta = st.text_input("Digite sua dúvida ou equação:", placeholder="Ex: quanto é 20% de 500?")
+# 4. Campo de entrada e lógica
+pergunta = st.text_input("Digite sua dúvida ou equação:",
+                         placeholder="Ex: quanto é 20% de 500?")
 
+# Adicionando o campo para carregar foto do problema
+foto_problema = st.file_uploader(
+    "Ou tire uma foto do problema:", type=["png", "jpg", "jpeg"])
+
+if foto_problema:
+    st.image(foto_problema, caption="Imagem carregada com sucesso!",
+             use_container_width=True)
 if st.button("Resolver"):
     if pergunta:
-        with st.spinner('Processando...'):
-            try:
-                # Chama a lógica que você já construiu
-                resultado = answer_math_question(pergunta)
-                
-                # Exibe o resultado de forma organizada
-                st.success("Cálculo Finalizado!")
-                st.subheader("Resultado:")
-                st.code(resultado.resposta)
-                
-                st.info(f"Fonte da resposta: {resultado.fonte}")
-            except Exception as e:
-                st.error(f"Ocorreu um erro: {e}")
+        resultado = answer_math_question(pergunta)
+        st.subheader("Resultado:")
+        st.write(resultado.resposta)
     else:
         st.warning("Por favor, digite uma pergunta.")
