@@ -6,12 +6,13 @@ st.set_page_config(page_title="Assistente Matemático IA", page_icon="🔢")
 
 # 2. Configuração da Barra Lateral (Sua biografia)
 with st.sidebar:
+    st.subheader("⌨️ Atalhos e Símbolos")
+    st.code("* -> Multiplicação\n** -> Potenciação\n/ -> Divisão")
+    st.divider()  # Este agora está alinhado à direita
+
     st.title("Sobre o Desenvolvedor")
     st.write("""
-    Esta IA foi desenvolvida por **Wilson Rocha do Nascimento**.
-    Wilson tem 25 anos e atua na área de Tecnologia da Informação há 5 anos, A
-    unindo sua experiência em suporte operacional e infraestrutura com o
-    desenvolvimento de soluções inteligentes para cálculos matemáticos.
+    Esta IA foi desenvolvida por **Wilson Rocha do Nascimento**...
     """)
     st.divider()
     st.info("Focado em Evolução Profissional e Análise de Dados.")
