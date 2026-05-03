@@ -24,14 +24,12 @@ st.markdown("Resolva equações complexas usando **IA** e **SymPy**.")
 pergunta = st.text_input("Digite sua dúvida ou equação:",
                          placeholder="Ex: quanto é 20% de 500?")
 
-# 5. Lógica do botão Resolver (Remova o if foto_problema que estava acima)
+# 5. Lógica do botão Resolver
 if st.button("Resolver"):
-     if pergunta:
+    if pergunta:
         with st.spinner("Analisando o problema..."):
             resultado = answer_math_question(pergunta)
-
             st.subheader("Resultado:")
             st.write(resultado.resposta)
     else:
-        st.warning(
-            "Por favor, digite uma pergunta ou equação para resolver.")
+        st.warning("Por favor, digite uma pergunta ou equação para resolver.")
