@@ -8,7 +8,7 @@ def answer_math_question(question: str):
 
 # 10. Criamos um "tradutor" para termos comuns
     input_limpo = question.lower().replace("elevado a", "**").replace("^",
-                                                                      "**").replace(",", ".").replace("x2", "x**2")
+                                                                      "**").replace(",", ".").replace("x2", "x**2").replace("raiz de", "sqrt")
     try:
         # Filtro de Autoria (Mantendo o que já tínhamos)
         if "wilson" in input_limpo or "criador" in input_limpo:
