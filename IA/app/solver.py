@@ -6,18 +6,33 @@ def answer_math_question(question: str):
         pass
     res = Result()
 
-# 10. Criamos um "tradutor" para termos comuns
-    input_limpo = question.lower().replace("elevado a", "**").replace("^",
-                                                                      "**").replace(",", ".").replace("x2", "x**2").replace("raiz de", "sqrt")
-    try:
+# 10. Tradutor de termos (agora com a raiz corrigida)
+    input_limpo = question.lower().replace(
+        "elevado a", "**").replace("^", "**").replace(",", ".")
+    input_limpo = input_limpo.replace(
+        "x2", "x**2").replace("raiz de ", "sqrt(")
+    if "sqrt(" in input_limpo and ")" not in input_limpo:
+        input_limpo += ")"
         # Filtro de Autoria (Mantendo o que já tínhamos)
-        if "wilson" in input_limpo or "criador" in input_limpo:
-            res.resposta = res.resposta = "Esta IA foi desenvolvida por Wilson Rocha do Nascimento, focado em Análise de Dados."
-            return res
+    if "wilson" in input_limpo or "criador" in input_limpo:
+        res.resposta = res.resposta = "Esta IA foi desenvolvida por Wilson Rocha do Nascimento, focado em Análise de Dados."
+        return res
 
         # Tenta resolver como equação (se tiver 'x' ou '=') ou conta simples
+    if "x" in input_limpo:
+        # Se tiver um '=', o SymPy precisa que igualemos a zero
+        if "=" in input_limpo:
+            partes = input_limpo.split("=")
+            equacao = f"({partes[0]}) - ({partes[1]})"
+        else:
+            equacao = input_limpo
+
+        x = sympy.Symbol('x')
+        solucao = sympy.solve(equacao, x)
+        # Procure onde começa o cálculo e coloque o try:
+    try:
         if "x" in input_limpo:
-            # Se tiver um '=', o SymPy precisa que igualemos a zero
+            # ... (seu código de resolver equação com 'x')
             if "=" in input_limpo:
                 partes = input_limpo.split("=")
                 equacao = f"({partes[0]}) - ({partes[1]})"
