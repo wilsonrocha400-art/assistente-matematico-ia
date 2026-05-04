@@ -7,6 +7,10 @@ def answer_math_question(question: str):
     res = Result()
 
 # 10. Tradutor de termos (agora com a raiz corrigida)
+# Tradutor para Porcentagem (Adicione estas linhas)
+    input_limpo = input_limpo.replace("quanto é ", "")
+    input_limpo = input_limpo.replace("% de ", "/100 * ")
+    input_limpo = input_limpo.replace("%", "/100")
     input_limpo = question.lower().replace(
         "elevado a", "**").replace("^", "**").replace(",", ".")
     # 12. Corrige a falta do '*' entre número e x (ex: 2x vira 2*x)
