@@ -31,7 +31,7 @@ with st.sidebar:
     """)
   # 3. Título Principal e Interface
 st.title("Wilson Rocha | DataSolver")
-st.markdown("Resolva equações complexas usando **IA** e **SymPy**.")
+st.markdown("Seu motor de cálculo inteligente para equações, álgebra e análise")
 
 # 4. Campo de entrada e lógica
 pergunta = st.text_input("Digite sua dúvida ou equação:",
