@@ -30,7 +30,7 @@ with st.sidebar:
     em criar tecnologias acessíveis e eficientes para desafios matemáticos modernos.
     """)
   # 3. Título Principal e Interface
-st.title("Wilson Rocha | DataSolver")
+st.title("Wilson Rocha | DataSolver 📊")
 st.markdown("Seu motor de cálculo inteligente para equações, álgebra e análise")
 
 # 4. Campo de entrada e lógica
