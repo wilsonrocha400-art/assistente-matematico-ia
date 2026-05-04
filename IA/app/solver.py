@@ -9,6 +9,11 @@ def answer_math_question(question: str):
 # 10. Tradutor de termos (agora com a raiz corrigida)
     input_limpo = question.lower().replace(
         "elevado a", "**").replace("^", "**").replace(",", ".")
+    # 12. Corrige a falta do '*' entre número e x (ex: 2x vira 2*x)
+    import re
+    # Primeiro corrige o 2x para 2*x
+    input_limpo = re.sub(r'(\d)x', r'\1*x', input_limpo)
+    # Depois corrige o x2 e a raiz
     input_limpo = input_limpo.replace(
         "x2", "x**2").replace("raiz de ", "sqrt(")
     if "sqrt(" in input_limpo and ")" not in input_limpo:
